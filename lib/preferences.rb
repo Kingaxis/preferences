@@ -168,6 +168,9 @@ module Preferences
         include Preferences::InstanceMethods
       end
       
+      # Reset definitions so that other subclass definitions aren't inherited
+      self.preference_definitions = self.preference_definitions.dup
+      
       # Create the definition
       name = name.to_s
       definition = PreferenceDefinition.new(name, *args)
